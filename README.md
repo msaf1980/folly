@@ -185,6 +185,34 @@ cmake \
   -DCMAKE_LIBRARY_PATH=/alt/lib/path1:/alt/lib/path2 ...
 ```
 
+## Build some dependecies with cget
+
+Install system [dependecies](#dependencies)
+
+Install needed packages via cget
+
+```
+export CGET_PREFIX=cget
+
+cget install -f ../requirements.txt --build-type Release
+```
+
+Install LZ4 and Boost (if system libs is too old)
+```
+cget install -f ../requirements-lz4.txt --build-type Release
+cget install -f ../requirements-boost.txt --build-type Release
+```
+
+Link with static boost required if non-system lib is used
+```
+cmake \
+  -DCMAKE_BUILD_TYPE=Release -G Ninja \
+  -DCMAKE_TOOLCHAIN_FILE=$CGET_PREFIX/cget/cget.cmake \
+  -DCMAKE_INSTALL_PREFIX=$CGET_PREFIX \
+  -DBUILD_TESTS=ON -DBOOST_LINK_STATIC=ON \
+  ..
+```
+
 ## Ubuntu LTS, CentOS Stream, Fedora
 
 Use the `getdeps.py` approach above. We test in CI on Ubuntu LTS, and occasionally on other distros.

@@ -1,0 +1,1 @@
+fmtlib/fmt@8.1.1 -DFMT_TEST=OFF

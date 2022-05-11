@@ -1,0 +1,1 @@
+lz4,https://github.com/lz4/lz4/archive/refs/tags/v1.9.3.zip -DLZ4_BUILD_CLI=OFF -DLZ4_BUILD_LEGACY_LZ4C=OFF -DBUILD_STATIC_LIBS=ON -DBUILD_SHARED_LIBS=OFF -d build/cmake
